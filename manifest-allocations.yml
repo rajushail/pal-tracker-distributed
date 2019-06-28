@@ -2,7 +2,7 @@ applications:
 - name: tracker-allocations
   path: ./applications/allocations-server/build/libs/allocations-server.jar
   routes:
-  - route: allocations-pal-ravindra.pcf.cfapps.io
+  - route: allocations-pal-ravindra.cfapps.io
   memory: 500M
   disk_quota: 500M
   instances: 1
