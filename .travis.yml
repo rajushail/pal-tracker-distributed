@@ -117,7 +117,6 @@ jobs:
         - echo "Downloading backlog server $RELEASE_TAG"
         - wget -P applications/backlog-server/build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-distributed/releases/download/$RELEASE_TAG/backlog-server.jar
       before_deploy:
-        - chmod +x gradlew
         - cp manifest-backlog.yml manifest.yml
         - echo "Deploying backlog server $RELEASE_TAG"
       deploy:
