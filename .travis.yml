@@ -138,7 +138,6 @@ jobs:
         - echo "Downloading timesheets server $RELEASE_TAG"
         - wget -P applications/timesheets-server/build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-distributed/releases/download/$RELEASE_TAG/timesheets-server.jar
       before_deploy:
-        - chmod +x gradlew
         - cp manifest-timesheets.yml manifest.yml
         - echo "Deploying timesheets server $RELEASE_TAG"
       deploy:
@@ -150,6 +149,8 @@ jobs:
         - echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
         - sudo apt-get update
         - sudo apt-get install cf-cli
+      before_script:
+        - chmod +x gradlew
       script:
         - cf login -a $CF_API_URL -u $CF_USERNAME -p $CF_PASSWORD -o $CF_ORG -s $CF_SPACE
         - ./gradlew cfMigrate
